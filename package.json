@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/arielsidi/team-page.git"
+    "url": "https://github.com/arielsidi/team-page.git"
   },
   "author": "Ariel Sidi",
   "license": "ISC",
