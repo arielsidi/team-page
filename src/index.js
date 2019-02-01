@@ -1,9 +1,5 @@
-// @flow
 import React from "react";
 import ReactDOM from "react-dom";
+import Application from "./views";
 
-const Index = () => {
-    return <div>Hello React!</div>;
-};
-
-ReactDOM.render(<Index />, document.getElementById("root"));
+ReactDOM.render(<Application />, document.getElementById("root"));
