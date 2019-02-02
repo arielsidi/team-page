@@ -7,7 +7,7 @@ import styled, { ThemeProvider, createGlobalStyle } from "styled-components";
 import theme from "../styles/theme.woffu";
 
 const GlobalStyle = createGlobalStyle`
-    @import url('https://fonts.googleapis.com/css?family=Fira+Sans:300,400,700');
+  @import url('https://fonts.googleapis.com/css?family=Fira+Sans:300,400,700');
   body {
     background-color: ${props => props.theme.appBgColor};
     font-family: ${props => props.theme.defaultFontFamily};

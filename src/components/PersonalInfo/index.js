@@ -2,12 +2,14 @@
 import React from "react";
 import styled from "styled-components";
 
+import { JOB_TITLES, DEPARTMENT_NAMES } from "../../constants/entities";
+
 const StyledPersonalInfo = styled.div`
     display: flex;
     align-items: center;
 `;
 
-const MemberImage = styled.div`
+const UserImage = styled.div`
     width: 30px;
     height: 30px;
     border-radius: 50%;
@@ -17,9 +19,12 @@ const MemberImage = styled.div`
     line-height: 30px;
     text-align: center;
     background: #fdbd52;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 `;
 
-const MemberNameAndRol = styled.div`
+const UserNameAndRol = styled.div`
     margin-left: ${props => props.theme.panelSpacing * 2}px;
     font-size: ${props => props.theme.fontSizeSmall};
     span {
@@ -31,14 +36,64 @@ const MemberNameAndRol = styled.div`
     }
 `;
 
-const PersonalInfo = props => (
-    <StyledPersonalInfo>
-        <MemberImage>JM</MemberImage>
-        <MemberNameAndRol>
-            Alberto García
-            <span>Head of SEO | Marketing</span>
-        </MemberNameAndRol>
-    </StyledPersonalInfo>
-);
+type PropsType = {
+    ImageURL: string,
+    Acronym: string,
+    FirstName: string,
+    LastName: string,
+    DepartmentId: number,
+    JobTitleId: number
+};
+
+class PersonalInfo extends React.Component<PropsType, { useAcronym: boolean }> {
+    constructor(props: Object) {
+        super(props);
+        this.state = {
+            useAcronym: true
+        };
+    }
+    componentDidMount() {
+        var img = new Image(1, 1);
+        img.src = this.props.ImageURL;
+        img.onload = () => {
+            this.setState({ useAcronym: false });
+        };
+    }
+
+    render() {
+        const {
+            ImageURL,
+            Acronym,
+            FirstName,
+            LastName,
+            DepartmentId,
+            JobTitleId
+        } = this.props;
+        const { useAcronym } = this.state;
+        const jobTitle = JOB_TITLES[JobTitleId];
+        const departmentName = DEPARTMENT_NAMES[DepartmentId];
+        return (
+            <StyledPersonalInfo>
+                <UserImage
+                    style={
+                        (useAcronym && {}) || {
+                            backgroundImage: `url("${ImageURL}")`
+                        }
+                    }
+                >
+                    {useAcronym && <span>{Acronym}</span>}
+                </UserImage>
+                <UserNameAndRol>
+                    {FirstName} {LastName}
+                    <span>
+                        {jobTitle}
+                        {jobTitle && departmentName && " | "}
+                        {departmentName}
+                    </span>
+                </UserNameAndRol>
+            </StyledPersonalInfo>
+        );
+    }
+}
 
 export default PersonalInfo;

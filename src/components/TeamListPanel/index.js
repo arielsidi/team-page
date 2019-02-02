@@ -72,15 +72,15 @@ const Table = styled.table`
             display: block;
         }
 
+        tr {
+            border: 1px solid #ccc;
+        }
+
         /* Hide table headers (but not display: none;, for accessibility) */
         thead tr {
             position: absolute;
             top: -9999px;
             left: -9999px;
-        }
-
-        tr {
-            border: 1px solid #ccc;
         }
 
         td {
@@ -152,8 +152,8 @@ const TeamListPanel = (props: { users: Array<Object> }) => (
                 </tr>
             </thead>
             <tbody>
-                {props.users.map((userData: Object, index) => (
-                    <UserItem userData={userData} key={index} />
+                {props.users.map((userData: Object, index: number) => (
+                    <UserItem {...userData} key={index} />
                 ))}
             </tbody>
         </Table>

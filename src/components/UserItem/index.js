@@ -3,37 +3,64 @@ import React from "react";
 import styled from "styled-components";
 
 import PersonalInfo from "../PersonalInfo";
+import ProgressBar from "../ProgressBar";
 
-const HolidaysBar = styled.div`
-    background: #ecedf2;
-    border-radius: ${props => props.theme.borderRadius};
+const ProgressBarContainer = styled.div`
     width: 150px;
     height: 18px;
-    div {
-        background: ${props => props.theme.primaryColor};
-        height: 100%;
-        width: 50%;
-        border-top-left-radius: ${props => props.theme.borderRadius};
-        border-bottom-left-radius: ${props => props.theme.borderRadius};
-    }
 `;
 
-const MemberItem = props => {
-    // const {personalInfo: }
+type PropsType = {
+    ImageURL: string,
+    Acronym: string,
+    FirstName: string,
+    LastName: string,
+    DepartmentId: number,
+    JobTitleId: number,
+    UserKey: number,
+    UsedDays: number,
+    AvailableDays: number,
+    EmployeeStartDate: string
+};
+
+const UserItem = (props: PropsType) => {
+    const personalInfo = (({
+        ImageURL,
+        Acronym,
+        FirstName,
+        LastName,
+        DepartmentId,
+        JobTitleId
+    }) => ({
+        ImageURL,
+        Acronym,
+        FirstName,
+        LastName,
+        DepartmentId,
+        JobTitleId
+    }))(props);
+    const { UserKey, UsedDays, AvailableDays, EmployeeStartDate } = props;
+
     return (
         <tr>
             <td>
-                <PersonalInfo />
+                <PersonalInfo {...personalInfo} />
             </td>
-            <td>53231</td>
+            <td>{UserKey}</td>
             <td>
-                <HolidaysBar>
-                    <div />
-                </HolidaysBar>
+                <ProgressBarContainer>
+                    <ProgressBar value={UsedDays} maxValue={AvailableDays} />
+                </ProgressBarContainer>
             </td>
-            <td>12/02/2018</td>
+            <td>
+                {new Date(EmployeeStartDate).toLocaleDateString("es-ES", {
+                    year: "numeric",
+                    month: "2-digit",
+                    day: "2-digit"
+                })}
+            </td>
         </tr>
     );
 };
 
-export default MemberItem;
+export default UserItem;
