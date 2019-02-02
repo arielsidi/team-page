@@ -9,7 +9,7 @@ const StyledHeader = styled.header`
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 8px;
+    padding: ${props => props.theme.panelSpacing}px;
 `;
 
 const Logo = styled.h1`
@@ -23,8 +23,8 @@ const Logo = styled.h1`
         color: #ffffff;
         margin-left: 4px;
         font-size: ${props => props.theme.fontSizeXsmall};
-        font-weight: normal;
-        opacity: 0.7;
+        font-weight: ${props => props.theme.fontWeightLight};
+        opacity: 0.8;
     }
 `;
 

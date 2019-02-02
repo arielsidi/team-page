@@ -1,8 +1,9 @@
-// @flow
+//@flow
 import React from "react";
 import styled from "styled-components";
 
 import { getUsers } from "../../api/users";
+import TeamListPanel from "../../components/TeamListPanel";
 
 const STATUS_LOADING = "LOADING";
 const STATUS_READY = "READY";
@@ -13,6 +14,7 @@ const NotificationPanel = styled.div`
     justify-content: center;
     align-items: center;
     height: 100vh;
+    font-weight: ${props => props.theme.fontWeightBold};
 `;
 
 const FailedPanel = styled(NotificationPanel)`
@@ -41,7 +43,7 @@ class Main extends React.Component<
     render() {
         switch (this.state.status) {
         case STATUS_READY:
-            return <NotificationPanel>Team list ready</NotificationPanel>;
+            return <TeamListPanel users={this.state.users} />;
         case STATUS_FAILED:
             return (
                 <FailedPanel>
