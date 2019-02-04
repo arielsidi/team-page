@@ -3,6 +3,7 @@ import React from "react";
 import styled from "styled-components";
 
 import UserItem from "../UserItem";
+import Paginator from "../Paginator";
 
 const PanelContainer = styled.div`
     max-width: 960px;
@@ -12,11 +13,15 @@ const PanelContainer = styled.div`
     border-radius: ${props => props.theme.borderRadius};
 `;
 
-const HeaderPanel = styled.div`
+const SectionPanel = styled.div`
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     padding: ${props => props.theme.panelSpacing}px;
+`;
+
+const HeaderPanel = styled(SectionPanel)`
+    justify-content: space-between;
     h2 {
         padding: ${props => props.theme.panelSpacing}px;
         margin: 0;
@@ -131,7 +136,19 @@ const Table = styled.table`
     }
 `;
 
-const TeamListPanel = (props: { users: Array<Object> }) => (
+type PropsType = {
+    users: Array<Object>,
+    pageCount: number,
+    currentPage: number,
+    pageChange: (page: number) => void
+};
+
+const TeamListPanel = ({
+    users,
+    pageCount,
+    currentPage,
+    pageChange
+}: PropsType) => (
     <PanelContainer>
         <HeaderPanel>
             <h2>Equipo</h2>
@@ -152,11 +169,18 @@ const TeamListPanel = (props: { users: Array<Object> }) => (
                 </tr>
             </thead>
             <tbody>
-                {props.users.map((userData: Object, index: number) => (
+                {users.map((userData: Object, index: number) => (
                     <UserItem {...userData} key={index} />
                 ))}
             </tbody>
         </Table>
+        <SectionPanel>
+            <Paginator
+                pageCount={pageCount}
+                currentPage={currentPage}
+                pageChange={pageChange}
+            />
+        </SectionPanel>
     </PanelContainer>
 );
 

@@ -52,12 +52,26 @@ class PersonalInfo extends React.Component<PropsType, { useAcronym: boolean }> {
             useAcronym: true
         };
     }
+
+    loadImage() {
+        if (this.props.ImageURL) {
+            var img = new Image(1, 1);
+            img.src = this.props.ImageURL;
+            img.onload = () => {
+                this.setState({ useAcronym: false });
+            };
+        }
+    }
+
     componentDidMount() {
-        var img = new Image(1, 1);
-        img.src = this.props.ImageURL;
-        img.onload = () => {
-            this.setState({ useAcronym: false });
-        };
+        this.loadImage();
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.ImageURL !== prevProps.ImageURL) {
+            this.setState({ useAcronym: true });
+            this.loadImage();
+        }
     }
 
     render() {
