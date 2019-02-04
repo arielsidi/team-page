@@ -4,6 +4,9 @@ import styled from "styled-components";
 
 import UserItem from "../UserItem";
 import Paginator from "../Paginator";
+import { getPage } from "../../util/pagination";
+
+const ITEMS_PER_PAGE = 15;
 
 const PanelContainer = styled.div`
     max-width: 960px;
@@ -136,52 +139,66 @@ const Table = styled.table`
     }
 `;
 
-type PropsType = {
-    users: Array<Object>,
-    pageCount: number,
-    currentPage: number,
-    pageChange: (page: number) => void
-};
+class TeamListPanel extends React.Component<
+    { users: Array<Object> },
+    { usersPage: Array<Object>, currentPage: number }
+> {
+    constructor(props: Object) {
+        super(props);
+        this.state = {
+            currentPage: 1,
+            usersPage: getPage(props.users, ITEMS_PER_PAGE, 1)
+        };
+        this.pageCount = Math.ceil(props.users.length / ITEMS_PER_PAGE);
+    }
 
-const TeamListPanel = ({
-    users,
-    pageCount,
-    currentPage,
-    pageChange
-}: PropsType) => (
-    <PanelContainer>
-        <HeaderPanel>
-            <h2>Equipo</h2>
-            <div>
-                Filtrar por fecha de incorporaci&oacute;n
-                <input id="dateFrom" type="date" />
-                <input id="dateTo" type="date" />
-            </div>
-        </HeaderPanel>
+    pageChange = page => {
+        this.setState({
+            usersPage: getPage(this.props.users, ITEMS_PER_PAGE, page),
+            currentPage: page
+        });
+    };
 
-        <Table>
-            <thead>
-                <tr>
-                    <th>Informaci&oacute;n personal</th>
-                    <th>ID</th>
-                    <th>Vacaciones</th>
-                    <th>Fecha de incorporaci&oacute;n a la empresa</th>
-                </tr>
-            </thead>
-            <tbody>
-                {users.map((userData: Object, index: number) => (
-                    <UserItem {...userData} key={index} />
-                ))}
-            </tbody>
-        </Table>
-        <SectionPanel>
-            <Paginator
-                pageCount={pageCount}
-                currentPage={currentPage}
-                pageChange={pageChange}
-            />
-        </SectionPanel>
-    </PanelContainer>
-);
+    render() {
+        const { usersPage, currentPage } = this.state;
+        return (
+            <PanelContainer>
+                <HeaderPanel>
+                    <h2>Equipo</h2>
+                    <div>
+                        Filtrar por fecha de incorporaci&oacute;n
+                        <input id="dateFrom" type="date" />
+                        <input id="dateTo" type="date" />
+                    </div>
+                </HeaderPanel>
+
+                <Table>
+                    <thead>
+                        <tr>
+                            <th>Informaci&oacute;n personal</th>
+                            <th>ID</th>
+                            <th>Vacaciones</th>
+                            <th>Fecha de incorporaci&oacute;n a la empresa</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {usersPage.map((userData: Object, index: number) => (
+                            <UserItem {...userData} key={index} />
+                        ))}
+                    </tbody>
+                </Table>
+                {this.pageCount > 1 && (
+                    <SectionPanel>
+                        <Paginator
+                            pageCount={this.pageCount}
+                            currentPage={currentPage}
+                            pageChange={this.pageChange}
+                        />
+                    </SectionPanel>
+                )}
+            </PanelContainer>
+        );
+    }
+}
 
 export default TeamListPanel;
