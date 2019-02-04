@@ -15,12 +15,10 @@ const Pages = styled.div`
         padding: 8px 13px;
         text-decoration: none;
         transition: background-color 0.3s;
-
-        border-left:first-child: 1px solid black;
     }
 
     a:not(:first-child) {
-        border-left:  1px solid ${props => props.theme.appBgColor};
+        border-left: 1px solid ${props => props.theme.appBgColor};
     }
 
     a.active {
@@ -38,7 +36,8 @@ const Pages = styled.div`
         background-color: ${props => props.theme.appBgColor};
     }
 
-    a.active, a.disabled {
+    a.active,
+    a.disabled {
         cursor: default;
     }
 `;

@@ -67,7 +67,7 @@ class PersonalInfo extends React.Component<PropsType, { useAcronym: boolean }> {
         this.loadImage();
     }
 
-    componentDidUpdate(prevProps) {
+    componentDidUpdate(prevProps: Object) {
         if (this.props.ImageURL !== prevProps.ImageURL) {
             this.setState({ useAcronym: true });
             this.loadImage();

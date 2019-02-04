@@ -9,7 +9,7 @@ export const getPage = (
     elements: Array<any>,
     ItemsPerPage: number,
     currentPage: number
-) => {
+): Array<any> => {
     --currentPage;
     return elements.slice(
         currentPage * ItemsPerPage,
@@ -20,7 +20,10 @@ export const getPage = (
 /**
  Create an array of page numbers
  */
-export const createPages = (pageCount: number, currentPage: number) => {
+export const createPages = (
+    pageCount: number,
+    currentPage: number
+): Array<number> => {
     let pages = [currentPage];
     let nextPage = currentPage + 1;
     let prevPage = currentPage - 1;

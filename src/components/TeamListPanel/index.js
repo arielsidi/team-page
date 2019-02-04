@@ -143,6 +143,7 @@ class TeamListPanel extends React.Component<
     { users: Array<Object> },
     { usersPage: Array<Object>, currentPage: number }
 > {
+    pageCount: number;
     constructor(props: Object) {
         super(props);
         this.state = {
@@ -152,7 +153,7 @@ class TeamListPanel extends React.Component<
         this.pageCount = Math.ceil(props.users.length / ITEMS_PER_PAGE);
     }
 
-    pageChange = page => {
+    pageChange = (page: number) => {
         this.setState({
             usersPage: getPage(this.props.users, ITEMS_PER_PAGE, page),
             currentPage: page
