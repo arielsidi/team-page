@@ -2,7 +2,12 @@
 import React from "react";
 import styled from "styled-components";
 
-import { JOB_TITLES, DEPARTMENT_NAMES } from "../../constants/entities";
+import {
+    JOB_TITLES,
+    DEPARTMENT_NAMES,
+    DEPARTMENT_COLORS,
+    DEPARTMENT_DEFAULT_COLOR
+} from "../../constants/entities";
 
 const StyledPersonalInfo = styled.div`
     display: flex;
@@ -18,7 +23,6 @@ const UserImage = styled.div`
     color: #fff;
     line-height: 30px;
     text-align: center;
-    background: #fdbd52;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -86,11 +90,15 @@ class PersonalInfo extends React.Component<PropsType, { useAcronym: boolean }> {
         const { useAcronym } = this.state;
         const jobTitle = JOB_TITLES[JobTitleId];
         const departmentName = DEPARTMENT_NAMES[DepartmentId];
+        const departmentColor =
+            DEPARTMENT_COLORS[DepartmentId] || DEPARTMENT_DEFAULT_COLOR;
         return (
             <StyledPersonalInfo>
                 <UserImage
                     style={
-                        (useAcronym && {}) || {
+                        (useAcronym && {
+                            backgroundColor: departmentColor
+                        }) || {
                             backgroundImage: `url("${ImageURL}")`
                         }
                     }

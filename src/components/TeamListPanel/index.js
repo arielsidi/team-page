@@ -139,38 +139,96 @@ const Table = styled.table`
     }
 `;
 
+const StyledDateRange = styled.div`
+    input {
+        border: 1px solid ${props => props.theme.textColor};
+        color: ${props => props.theme.textColor};
+        font-size: ${props => props.theme.fontSizeMedium};
+        opacity: 0.5;
+    }
+`;
+
 class TeamListPanel extends React.Component<
     { users: Array<Object> },
-    { usersPage: Array<Object>, currentPage: number }
+    {
+        usersPage: Array<Object>,
+        filteredUsers: Array<Object>,
+        currentPage: number,
+        dateFrom: ?Date,
+        dateTo: ?Date,
+        pageCount: number
+    }
 > {
-    pageCount: number;
     constructor(props: Object) {
         super(props);
         this.state = {
             currentPage: 1,
-            usersPage: getPage(props.users, ITEMS_PER_PAGE, 1)
+            filteredUsers: props.users,
+            usersPage: getPage(props.users, ITEMS_PER_PAGE, 1),
+            pageCount: Math.ceil(props.users.length / ITEMS_PER_PAGE),
+            dateFrom: null,
+            dateTo: null
         };
-        this.pageCount = Math.ceil(props.users.length / ITEMS_PER_PAGE);
     }
 
     pageChange = (page: number) => {
-        this.setState({
-            usersPage: getPage(this.props.users, ITEMS_PER_PAGE, page),
+        this.setState(state => ({
+            usersPage: getPage(state.filteredUsers, ITEMS_PER_PAGE, page),
             currentPage: page
+        }));
+    };
+
+    dateChange = (event: SyntheticInputEvent<HTMLInputElement>) => {
+        const fieldName = event.target.name;
+        const fieldValue = event.target.value;
+
+        this.setState((state, props) => {
+            const dateRange = {
+                dateFrom: state.dateFrom,
+                dateTo: state.dateTo
+            };
+            dateRange[fieldName] = fieldValue;
+
+            const filteredUsers = props.users.filter(user => {
+                let validDate = true;
+                let date = new Date(user.EmployeeStartDate);
+                if (dateRange.dateFrom) {
+                    validDate = date >= new Date(dateRange.dateFrom);
+                }
+                if (validDate && dateRange.dateTo) {
+                    validDate = date <= new Date(dateRange.dateTo);
+                }
+                return validDate;
+            });
+
+            return {
+                [fieldName]: fieldValue,
+                filteredUsers,
+                usersPage: getPage(filteredUsers, ITEMS_PER_PAGE, 1),
+                pageCount: Math.ceil(filteredUsers.length / ITEMS_PER_PAGE)
+            };
         });
     };
 
     render() {
-        const { usersPage, currentPage } = this.state;
+        const { usersPage, currentPage, pageCount } = this.state;
         return (
             <PanelContainer>
                 <HeaderPanel>
                     <h2>Equipo</h2>
-                    <div>
+                    <StyledDateRange>
                         Filtrar por fecha de incorporaci&oacute;n
-                        <input id="dateFrom" type="date" />
-                        <input id="dateTo" type="date" />
-                    </div>
+                        <input
+                            name="dateFrom"
+                            type="date"
+                            onChange={this.dateChange}
+                        />
+                        <input
+                            name="dateTo"
+                            type="date"
+                            onChange={this.dateChange}
+                        />
+                    </StyledDateRange>
                 </HeaderPanel>
 
                 <Table>
@@ -188,10 +246,10 @@ class TeamListPanel extends React.Component<
                         ))}
                     </tbody>
                 </Table>
-                {this.pageCount > 1 && (
+                {pageCount > 1 && (
                     <SectionPanel>
                         <Paginator
-                            pageCount={this.pageCount}
+                            pageCount={pageCount}
                             currentPage={currentPage}
                             pageChange={this.pageChange}
                         />
