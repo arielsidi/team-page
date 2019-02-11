@@ -205,7 +205,8 @@ class TeamListPanel extends React.Component<
                 [fieldName]: fieldValue,
                 filteredUsers,
                 usersPage: getPage(filteredUsers, ITEMS_PER_PAGE, 1),
-                pageCount: Math.ceil(filteredUsers.length / ITEMS_PER_PAGE)
+                pageCount: Math.ceil(filteredUsers.length / ITEMS_PER_PAGE),
+                currentPage: 1
             };
         });
     };
