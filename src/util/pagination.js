@@ -1,6 +1,6 @@
 // @flow
 
-const MAX_PAGE_BUTTONS = 7;
+export const MAX_PAGE_BUTTONS = 7;
 
 /*
  Extracts a page from an array

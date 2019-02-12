@@ -3,52 +3,25 @@
 exports[`User item Should render item with data: {"ImageURL":"","Acronym":"JR","FirstName":"John","LastName":"Rambo","DepartmentId":1910,"JobTitleId":12332,"UserKey":31232,"UsedDays":11,"AvailableDays":8,"EmployeeStartDate":"2005-01-03T00:00:00.000"}. 1`] = `
 <tr>
   <td>
-    <div
-      className="PersonalInfo__StyledPersonalInfo-sc-1vtz0dj-0 keMiAq"
-    >
-      <div
-        className="PersonalInfo__UserImage-sc-1vtz0dj-1 joRAcz"
-        style={
-          Object {
-            "backgroundColor": "#999999",
-          }
-        }
-      >
-        <span>
-          JR
-        </span>
-      </div>
-      <div
-        className="PersonalInfo__UserNameAndRol-sc-1vtz0dj-2 ebAIuj"
-      >
-        John
-         
-        Rambo
-        <span />
-      </div>
-    </div>
+    <PersonalInfo
+      Acronym="JR"
+      DepartmentId={1910}
+      FirstName="John"
+      ImageURL=""
+      JobTitleId={12332}
+      LastName="Rambo"
+    />
   </td>
   <td>
     31232
   </td>
   <td>
-    <div
-      className="UserItem__ProgressBarContainer-gqv508-0 frgcqb"
-    >
-      <div
-        className="ProgressBar__StyledProgressBar-sc-1nnf4cm-0 bAMphD"
-        title="11/8"
-      >
-        <div
-          style={
-            Object {
-              "width": "138%",
-            }
-          }
-          title="11/8"
-        />
-      </div>
-    </div>
+    <UserItem__ProgressBarContainer>
+      <ProgressBar
+        maxValue={8}
+        value={11}
+      />
+    </UserItem__ProgressBarContainer>
   </td>
   <td>
     01/03/2005
@@ -59,52 +32,25 @@ exports[`User item Should render item with data: {"ImageURL":"","Acronym":"JR","
 exports[`User item Should render item with data: {"ImageURL":"","Acronym":"JR","FirstName":"John","LastName":"Rambo","DepartmentId":1910,"JobTitleId":null,"UserKey":31232,"UsedDays":11,"AvailableDays":8,"EmployeeStartDate":"2005-01-03T00:00:00.000"}. 1`] = `
 <tr>
   <td>
-    <div
-      className="PersonalInfo__StyledPersonalInfo-sc-1vtz0dj-0 keMiAq"
-    >
-      <div
-        className="PersonalInfo__UserImage-sc-1vtz0dj-1 joRAcz"
-        style={
-          Object {
-            "backgroundColor": "#999999",
-          }
-        }
-      >
-        <span>
-          JR
-        </span>
-      </div>
-      <div
-        className="PersonalInfo__UserNameAndRol-sc-1vtz0dj-2 ebAIuj"
-      >
-        John
-         
-        Rambo
-        <span />
-      </div>
-    </div>
+    <PersonalInfo
+      Acronym="JR"
+      DepartmentId={1910}
+      FirstName="John"
+      ImageURL=""
+      JobTitleId={null}
+      LastName="Rambo"
+    />
   </td>
   <td>
     31232
   </td>
   <td>
-    <div
-      className="UserItem__ProgressBarContainer-gqv508-0 frgcqb"
-    >
-      <div
-        className="ProgressBar__StyledProgressBar-sc-1nnf4cm-0 bAMphD"
-        title="11/8"
-      >
-        <div
-          style={
-            Object {
-              "width": "138%",
-            }
-          }
-          title="11/8"
-        />
-      </div>
-    </div>
+    <UserItem__ProgressBarContainer>
+      <ProgressBar
+        maxValue={8}
+        value={11}
+      />
+    </UserItem__ProgressBarContainer>
   </td>
   <td>
     01/03/2005

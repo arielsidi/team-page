@@ -1,6 +1,6 @@
 import React from "react";
 import TeamListPanel from "../../TeamListPanel";
-import renderer from "react-test-renderer";
+import { shallow } from "enzyme";
 
 describe("Team list panel", () => {
     const users = [
@@ -30,7 +30,7 @@ describe("Team list panel", () => {
         }
     ];
     it(`Should render panel with data: ${JSON.stringify(users)}.`, () => {
-        const tree = renderer.create(<TeamListPanel users={users} />).toJSON();
-        expect(tree).toMatchSnapshot();
+        let wrapper = shallow(<TeamListPanel users={users} />);
+        expect(wrapper).toMatchSnapshot();
     });
 });

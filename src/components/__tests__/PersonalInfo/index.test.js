@@ -1,6 +1,6 @@
 import React from "react";
 import PersonalInfo from "../../PersonalInfo";
-import renderer from "react-test-renderer";
+import { shallow } from "enzyme";
 
 describe("PersonalInfo", () => {
     const userData = [
@@ -31,8 +31,8 @@ describe("PersonalInfo", () => {
     ];
     userData.forEach(data => {
         it(`Should render panel with data: ${JSON.stringify(data)}.`, () => {
-            const tree = renderer.create(<PersonalInfo {...data} />).toJSON();
-            expect(tree).toMatchSnapshot();
+            let wrapper = shallow(<PersonalInfo {...data} />);
+            expect(wrapper).toMatchSnapshot();
         });
     });
 });

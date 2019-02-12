@@ -1,6 +1,6 @@
 import React from "react";
 import UserItem from "../../UserItem";
-import renderer from "react-test-renderer";
+import { shallow } from "enzyme";
 
 describe("User item", () => {
     const userData = [
@@ -31,8 +31,8 @@ describe("User item", () => {
     ];
     userData.forEach(data => {
         it(`Should render item with data: ${JSON.stringify(data)}.`, () => {
-            const tree = renderer.create(<UserItem {...data} />).toJSON();
-            expect(tree).toMatchSnapshot();
+            let wrapper = shallow(<UserItem {...data} />);
+            expect(wrapper).toMatchSnapshot();
         });
     });
 });

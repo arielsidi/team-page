@@ -57,6 +57,7 @@ const Paginator = ({ pageCount, currentPage, pageChange }: PropsType) => {
         <Pages>
             <a
                 href="#"
+                id="prevPageButton"
                 {...(currentPage == 1 && { className: "disabled" }) || {
                     onClick: () => pageChange(currentPage - 1)
                 }}
@@ -80,6 +81,7 @@ const Paginator = ({ pageCount, currentPage, pageChange }: PropsType) => {
             ))}
             <a
                 href="#"
+                id="nextPageButton"
                 {...(currentPage == pageCount && { className: "disabled" }) || {
                     onClick: () => pageChange(currentPage + 1)
                 }}
