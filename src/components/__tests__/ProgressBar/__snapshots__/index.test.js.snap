@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Progress bar Should render a progress bar with value 50 and maxvalue 100. 1`] = `
+<div
+  className="ProgressBar__StyledProgressBar-sc-1nnf4cm-0 bAMphD"
+  title="50/100"
+>
+  <div
+    style={
+      Object {
+        "width": "50%",
+      }
+    }
+    title="50/100"
+  />
+</div>
+`;

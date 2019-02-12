@@ -1,0 +1,158 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Team list panel Should render panel with data: [{"ImageURL":"","Acronym":"JR","FirstName":"John","LastName":"Rambo","DepartmentId":1910,"JobTitleId":12332,"UserKey":31232,"UsedDays":11,"AvailableDays":8,"EmployeeStartDate":"2005-01-03T00:00:00.000"},{"ImageURL":"","Acronym":"JR","FirstName":"John","LastName":"Rambo","DepartmentId":1910,"JobTitleId":null,"UserKey":31232,"UsedDays":11,"AvailableDays":8,"EmployeeStartDate":"2005-01-03T00:00:00.000"}]. 1`] = `
+<div
+  className="TeamListPanel__PanelContainer-sc-7pk5is-0 imhVIm"
+>
+  <div
+    className="TeamListPanel__SectionPanel-sc-7pk5is-1 TeamListPanel__HeaderPanel-sc-7pk5is-2 jDssMp"
+  >
+    <h2>
+      Equipo
+    </h2>
+    <div
+      className="TeamListPanel__StyledDateRange-sc-7pk5is-4 fZvOfg"
+    >
+      Filtrar por fecha de incorporación
+      <input
+        name="dateFrom"
+        onChange={[Function]}
+        type="date"
+      />
+      <input
+        name="dateTo"
+        onChange={[Function]}
+        type="date"
+      />
+    </div>
+  </div>
+  <table
+    className="TeamListPanel__Table-sc-7pk5is-3 hfGqsD"
+  >
+    <thead>
+      <tr>
+        <th>
+          Información personal
+        </th>
+        <th>
+          ID
+        </th>
+        <th>
+          Vacaciones
+        </th>
+        <th>
+          Fecha de incorporación a la empresa
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <div
+            className="PersonalInfo__StyledPersonalInfo-sc-1vtz0dj-0 keMiAq"
+          >
+            <div
+              className="PersonalInfo__UserImage-sc-1vtz0dj-1 joRAcz"
+              style={
+                Object {
+                  "backgroundColor": "#999999",
+                }
+              }
+            >
+              <span>
+                JR
+              </span>
+            </div>
+            <div
+              className="PersonalInfo__UserNameAndRol-sc-1vtz0dj-2 ebAIuj"
+            >
+              John
+               
+              Rambo
+              <span />
+            </div>
+          </div>
+        </td>
+        <td>
+          31232
+        </td>
+        <td>
+          <div
+            className="UserItem__ProgressBarContainer-gqv508-0 frgcqb"
+          >
+            <div
+              className="ProgressBar__StyledProgressBar-sc-1nnf4cm-0 bAMphD"
+              title="11/8"
+            >
+              <div
+                style={
+                  Object {
+                    "width": "138%",
+                  }
+                }
+                title="11/8"
+              />
+            </div>
+          </div>
+        </td>
+        <td>
+          01/03/2005
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div
+            className="PersonalInfo__StyledPersonalInfo-sc-1vtz0dj-0 keMiAq"
+          >
+            <div
+              className="PersonalInfo__UserImage-sc-1vtz0dj-1 joRAcz"
+              style={
+                Object {
+                  "backgroundColor": "#999999",
+                }
+              }
+            >
+              <span>
+                JR
+              </span>
+            </div>
+            <div
+              className="PersonalInfo__UserNameAndRol-sc-1vtz0dj-2 ebAIuj"
+            >
+              John
+               
+              Rambo
+              <span />
+            </div>
+          </div>
+        </td>
+        <td>
+          31232
+        </td>
+        <td>
+          <div
+            className="UserItem__ProgressBarContainer-gqv508-0 frgcqb"
+          >
+            <div
+              className="ProgressBar__StyledProgressBar-sc-1nnf4cm-0 bAMphD"
+              title="11/8"
+            >
+              <div
+                style={
+                  Object {
+                    "width": "138%",
+                  }
+                }
+                title="11/8"
+              />
+            </div>
+          </div>
+        </td>
+        <td>
+          01/03/2005
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;

@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Main Should render properly. 1`] = `
+<div
+  className="Main__NotificationPanel-jhwavl-0 kUsSUf"
+>
+  Loading team members list, please wait...
+</div>
+`;

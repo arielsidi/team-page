@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Paginator Should render a paginator with 10 pages and current page 2. 1`] = `
+<div
+  className="Paginator__Pages-sc-1yt4i60-0 kHWZPw"
+>
+  <a
+    href="#"
+    onClick={[Function]}
+  >
+    &lt;
+  </a>
+  <a
+    href="#"
+    onClick={[Function]}
+  >
+    1
+  </a>
+  <a
+    className="active"
+    href="#"
+  >
+    2
+  </a>
+  <a
+    href="#"
+    onClick={[Function]}
+  >
+    3
+  </a>
+  <a
+    href="#"
+    onClick={[Function]}
+  >
+    4
+  </a>
+  <a
+    href="#"
+    onClick={[Function]}
+  >
+    5
+  </a>
+  <a
+    href="#"
+    onClick={[Function]}
+  >
+    6
+  </a>
+  <a
+    href="#"
+    onClick={[Function]}
+  >
+    ..
+  </a>
+  <a
+    href="#"
+    onClick={[Function]}
+  >
+    &gt;
+  </a>
+</div>
+`;

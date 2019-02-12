@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header Should render properly. 1`] = `
+<header
+  className="Header__StyledHeader-sc-1xllh7p-0 cMByFa"
+>
+  <h1
+    className="Header__Logo-sc-1xllh7p-1 rahGx"
+  >
+    <img
+      alt="Woffu HR Suite"
+      src=""
+    />
+    <span>
+      HR Suite
+    </span>
+  </h1>
+</header>
+`;
